@@ -154,81 +154,24 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">編成基礎(控制器編成,Python範例) << <a href='編成基礎(控制器編成,Python範例).html'>Previous</a> <a href='執行器(線性馬達,發光二極管,肌肉,鋼筆).html'>Next</a> >> 執行器(線性馬達,發光二極管,肌肉,鋼筆)<br /><h1>感測器</h1>
-<h4>相機傳感器</h4>
-<p>對於大多數應用程序而言，添加通用的Camera節點就足夠了。 通用相機是可自定義的（分辨率，視野，噪點等），默認情況下包括變焦和聚焦機制。 提供特殊效果，例如運動模糊，各種噪聲模型，鏡頭畸變和使用球形投影。除了添加通用的Camera節點外，Webot中還提供了一些預定義的Camera模型。</p>
-<p><strong>智能相機</strong></p>
-<p>如果將“識別”節點添加到相機，則相機不僅可以返回圖像，而且還可以返回相機圖像中檢測到的所有對象及其大小和位置。 因此，模擬像是Mobileye之類的智能相機非常容易。</p>
-<p><img alt="smart_camera.png" src="https://raw.githubusercontent.com/cyberbotics/webots/master/docs/guide/images/sensors/smart_camera.png"/></p>
-<p><strong>MultiSense S21</strong></p>
-<p>MultiSense S21是基於立體相機的距離傳感器。我們的傳感器模型包括多個Webots設備。內部的IntertialUnit設備用於獲取設備的側傾角，俯仰角和偏航角。 可以使用Webots相機獨立檢索立體相機的左右RGB圖像。 或者，可以在MultiSense S21設備的中央啟用RGB相機和RangeFinder設備。 存在這兩個“元”設備以模仿由真實設備生成的3D彩色點的雲。</p>
-<p>可以使用下表從MultiSenseS21.name字段計算用於從控制器檢索設備的內部設備名稱：</p>
-<p><img alt="" height="529" src="https://s40723123.github.io/cd2020/images/1586269302004.jpg" width="398"/></p>
-<p><img alt="multisense_s21.png" src="https://raw.githubusercontent.com/cyberbotics/webots/master/docs/guide/images/sensors/multisense_s21.thumbnail.png"/></p>
-<p><img alt="" height="365" src="https://s40723123.github.io/cd2020/images/1586269413764.jpg" width="477"/></p>
-<p>名稱字段定義MultiSenseS21名稱，並用於計算內部設備名稱（請參閱此表）。</p>
-<p>cameraWidth和cameraHeight字段指定所有內部渲染設備（即Cameras和RangeFinder）的分辨率。</p>
-<p>cameraFieldOfView字段指定所有內部渲染設備的水平視場。</p>
-<p>cameraNoise字段指定所有內部渲染設備的噪聲（請參閱Camera.noise）。</p>
-<p>rangeFinderNoise字段指定內部元RangeFinder的噪聲（請參閱RangeFinder.noise）。</p>
-<p>rangeFinderMaxRange字段指定內部元RangeFinder的最大範圍（請參閱RangeFinder.maxRange）。</p>
-<p>leftCamera，rightCamera，metaCamera和metaRangeFinder字段允許啟用相應的內部渲染設備。</p>
-<p>enablePhysics字段指定傳感器是否應該受到物理影響（質量= 1.5 [kg]）。</p>
-<h4>距離傳感器</h4>
-<p>對於大多數應用程序而言，添加通用的DistanceSensor節點就足夠了，因為它們是可自定義的（分辨率，lookupTable，光圈等）。此外，Webot中提供了一些預定義的商業化模型，例如某些紅外傳感器。</p>
-<p><strong>Sharp GP2D120</strong></p>
-<p><img alt="sharp_GP2D120.png" src="https://raw.githubusercontent.com/cyberbotics/webots/master/docs/guide/images/sensors/sharp_GP2D120.png"/></p>
-<p>Sharp GP2D120是一款具有集成信號處理和模擬電壓輸出的測距傳感器。 該設備輸出與檢測距離相對應的電壓。該型號具有以下規格：</p>
-<p>有效範圍：<span>4 to 30 [cm]</span></p>
-<p>輸出類型：類比</p>
-<p>響應時間：39 [ms]</p>
-<p>啟動延遲：44 [ms]</p>
-<p>平均消耗：33 [mA]</p>
-<p>原型SharpGP2D120 {<br/>   SFVec3f轉換0 0 0<br/>   旋轉旋轉0 1 0 0<br/>   SFString名稱“夏普的紅外傳感器GP2D120”<br/>   SFString模型“ GP2D120”</p>
-<p>根據數據表中的特徵，DistanceSensor的lookupTable字段已經實現。</p>
-<p>wb_distance_sensor_get_value函數返回測量的電壓/強度。 要轉換這些值，請使用以下公式：</p>
+    <div id="tipue_search_content">Preferences(首選項) << <a href='Preferences(首選項).html'>Previous</a> <a href='編成基礎(控制器編成,Python範例).html'>Next</a> >> 編成基礎(控制器編成,Python範例)<br /><h1>The Scene Tree(場景樹)</h1>
+<p><span>如上一節所述，要訪問“場景樹窗口”，可以</span><code>Scene Tree</code><span>在</span><code>Tools</code><span>菜單中選擇，也可以按</span><code>Show Scene Tree</code><span>主工具欄中的按鈕。場景樹包含描述模擬世界（包括機器人和環境）及其圖形表示的信息。Webots的場景樹的結構類似於VRML97文件。它由節點列表組成，每個節點包含字段。字段可以包含值（文本字符串，數字值）或其他節點。</span></p>
+<p><span><span>本節描述了“場景樹”的用戶界面，並概述了VRML97節點和Webots節點。</span></span></p>
+<figure name="scene-tree-window"></figure>
+<figure name="scene-tree-window"><img alt="" height="480" src="./../images/場景樹用戶介面.JPG" width="263"/></figure>
+<figure name="scene-tree-window">場景樹窗口</figure>
+<p><span><span>場景樹具有上下文菜單，該上下文菜單包含許多有用的操作，具體取決於選擇，包括但不限於：剪切，複製和粘貼操作，將字段重置為其默認值，將</span></span><a href="https://cyberbotics.com/doc/reference/viewpoint"><span><span>視點</span></span></a><span><span>移至對象，設置</span></span><a href="https://cyberbotics.com/doc/reference/viewpoint"><span><span>視點</span></span></a><span><span>跟隨對象，或打開文檔查看器以查看所選節點的文檔。</span></span></p>
+<p><span><span>此外，如果當前選擇是</span></span><a href="https://cyberbotics.com/doc/reference/robot"><span><span>Robot</span></span></a><span><span>節點（或後代，或</span></span><code>PROTO</code><span><span>基於</span></span><a href="https://cyberbotics.com/doc/reference/robot"><span><span>Robot的</span></span></a><span><span>實例</span><span>），則可以在文本編輯器中打開相應的機器人窗口或打開機器人的控制器。</span></span></p>
+<p><br/><a class="anchor-link" href="https://cyberbotics.com/doc/guide/the-scene-tree#field-editor"><span class="anchor-link-image"></span></a><span><span>現場編輯</span></span></p>
+<p><span><span>可以雙擊擴展節點。</span><span>選擇字段後，可以在“場景樹”的底部編輯其值。</span><span>雙擊或按</span></span><code>Enter</code><span><span>字段上</span><span>的</span><span>鍵將選擇字段編輯器面板的第一個可編輯項目。</span><span>可以通過在字段編輯器面板中的所有項目之間切換來將鍵盤焦點返回到“場景樹”。</span><span>對於文本字段，通過按鍵應用更改</span></span><code>Enter</code><span><span>。</span><span>這對於數字字段是相同的，但是向上和向下箭頭鍵也可以用於向上和向下調整值，並立即應用更改。</span><span>對於復選框，使用</span></span><code>Space</code><span><span>欄</span><span>更改值</span><span>。</span><span>應用的更改將立即反映在3D窗口中。</span><span>字段編輯器部分提供以下按鈕：</span></span></p>
+<p><img alt="" height="306" src="./../images/場景樹編輯.JPG" width="454"/></p>
+<p>Webots節點編輯器</p>
 <ul>
-<li>Convert meters to voltage:<span> </span><code>y(x) = 0.5131*x^(-0.5735)-0.6143</code></li>
-<li>Convert voltage to meters:<span> </span><code>y(x) = 0.1594*x^(-0.8533)-0.02916</code></li>
+<li>
+<p><strong><span><span>顯示調整大小手柄</span></span></strong><span><span>：顯示用於調整大小和縮放3D窗口中選定節點的手柄。</span><span>僅對“幾何”節點和“<span> </span></span></span><a href="https://cyberbotics.com/doc/reference/transform"><span><span>變換”</span></span></a><span><span>節點</span><span>派生的節點顯示此選項</span><span>。</span><span>對於過程性PROTO節點，僅當在模板語句中未使用調整大小或縮放所涉及的字段時才可用。</span></span></p>
+</li>
 </ul>
-<p><strong>Sharp GP2Y0A02YK0F</strong></p>
-<p><strong><img alt="sharp_GP2Y0A02YK0F.png" src="https://raw.githubusercontent.com/cyberbotics/webots/master/docs/guide/images/sensors/sharp_GP2Y0A02YK0F.png"/></strong></p>
-<p>Sharp GP2Y0A02YK0F是一種測距傳感器單元，由PSD（位置敏感檢測器），IR-LED（紅外發光二極管）和信號處理電路的集成組合組成。 由於採用三角測量法，物體的反射率，環境溫度和工作持續時間的變化不容易影響距離檢測。 該設備輸出與檢測距離相對應的電壓。 因此，該傳感器也可以用作接近傳感器。</p>
-<p>該型號具有以下規格：</p>
-<p>有效範圍：20至150 [cm]</p>
-<p>輸出類型：類比</p>
-<p>響應時間：33 [ms]</p>
-<p>啟動延遲：50 [ms]</p>
-<p>平均消耗：33 [mA]</p>
-<p>原型SharpGP2Y0A02YK0F {<br/>   SFVec3f轉換0 0 0<br/>   旋轉旋轉0 1 0 0<br/>   SFString名稱“夏普的紅外傳感器GP2Y0A02YK0F”</p>
-<p>根據數據表中的特徵，DistanceSensor的lookupTable字段已經實現。wb_distance_sensor_get_value函數返回測量的電壓/強度。 要轉換這些值，請使用以下公式：</p>
-<ul>
-<li>Convert meters to voltage:<span> </span><code>y(x) = 1.784*x^(-0.4215)-1.11</code></li>
-<li>Convert voltage to meters:<span> </span><code>y(x) = 0.7611*x^(-0.9313)-0.1252</code></li>
-</ul>
-<p><strong>Sharp GP2Y0A41SK0F</strong></p>
-<p><strong><img alt="sharp_GP2Y0A41SK0F.png" src="https://raw.githubusercontent.com/cyberbotics/webots/master/docs/guide/images/sensors/sharp_GP2Y0A41SK0F.png"/></strong></p>
-<p>Sharp GP2Y0A41SK0F是一種測距傳感器單元，由PSD（位置敏感檢測器），IR-LED（紅外發光二極管）和信號處理電路的集成組合組成。 由於採用三角測量法，物體的反射率，環境溫度和工作持續時間的變化不容易影響距離檢測。 該設備輸出與檢測距離相對應的電壓。 因此，該傳感器也可以用作接近傳感器。</p>
-<p>該型號具有以下規格：</p>
-<p>有效範圍：4到30 [cm]<br/>輸出類型：類比<br/>響應時間：16.5 [ms]<br/>啟動延遲：26 [ms]<br/>平均消耗：12 [mA]</p>
-<p><span>原型SharpGP2Y0A41SK0F {<br/>   SFVec3f轉換0 0 0<br/>   旋轉旋轉0 1 0 0<br/>   SFString名稱“夏普的紅外傳感器GP2Y0A41SK0F”<br/></span></p>
-<p>根據數據表中的特徵，DistanceSensor的lookupTable字段已經實現。wb_distance_sensor_get_value函數返回測量的電壓/強度。 要轉換這些值，請使用以下公式：</p>
-<ul>
-<li>Convert meters to voltage:<span> </span><code>y(x) = 0.5131*x^(-0.5735)-0.6143</code></li>
-<li>Convert voltage to meters:<span> </span><code>y(x) = 0.1594*x^(-0.8533)-0.02916</code><code></code></li>
-</ul>
-<p><strong>Sharp GP2Y0A710K0F</strong></p>
-<p><strong><img alt="sharp_GP2Y0A710K0F.png" src="https://raw.githubusercontent.com/cyberbotics/webots/master/docs/guide/images/sensors/sharp_GP2Y0A710K0F.thumbnail.png"/></strong></p>
-<p>Sharp GP2Y0A710K0F是一種測距傳感器單元，由PSD（位置敏感檢測器），IR-LED（紅外發光二極管）和信號處理電路的集成組合組成。 由於採用三角測量法，物體的反射率，環境溫度和工作持續時間的變化不容易影響距離檢測。 該設備輸出與檢測距離相對應的電壓。 因此，該傳感器也可以用作接近傳感器。</p>
-<p>該型號具有以下規格：</p>
-<p>有效範圍：100至550 [cm]<br/>輸出類型：類比<br/>響應時間：21 [ms]<br/>啟動延遲：26 [ms]<br/>平均消耗：30 [mA]</p>
-<p>原型SharpGP2Y0A710K0F {<br/>   SFVec3f轉換0 0 0<br/>   旋轉旋轉0 1 0 0<br/>   SFString名稱“夏普的紅外傳感器GP2Y0A710K0F”</p>
-<p>根據數據表中的特徵，DistanceSensor的lookupTable字段已經實現。wb_distance_sensor_get_value函數返回測量的電壓/強度。 要轉換這些值，請使用以下公式：</p>
-<ul>
-<li>Convert meters to voltage:<span> </span><code>y(x) = 1.962*x^(-0.5214)+0.4926</code></li>
-<li>Convert voltage to meters:<span> </span><code>y(x) = 20.24*x^(-4.76)+0.6632</code><code></code></li>
-</ul>
-<br />編成基礎(控制器編成,Python範例) << <a href='編成基礎(控制器編成,Python範例).html'>Previous</a> <a href='執行器(線性馬達,發光二極管,肌肉,鋼筆).html'>Next</a> >> 執行器(線性馬達,發光二極管,肌肉,鋼筆)</div>
+<br />Preferences(首選項) << <a href='Preferences(首選項).html'>Previous</a> <a href='編成基礎(控制器編成,Python範例).html'>Next</a> >> 編成基礎(控制器編成,Python範例)</div>
         
     <!-- footer -->
       <div class="container">
